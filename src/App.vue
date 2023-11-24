@@ -4,22 +4,9 @@
       <section>
         <div class="container">
           <h1>{{ title }}</h1>
-
           <ErrorMessage :message="errorMessage" v-if="errorMessage" />
-
           <NewNote :note="note" @createNote="createNote" />
-
-          <div class="notes">
-            <div class="note" v-for="(note, index) in notes" :key="index">
-              <div class="note-header">
-                <p>{{ note.title }}</p>
-              </div>
-              <div class="note-body">
-                <p>{{ note.description }}</p>
-                <span>{{ note.date }}</span>
-              </div>
-            </div>
-          </div>
+          <Notes :notes="notes" />
         </div>
       </section>
     </div>
@@ -27,37 +14,39 @@
 </template>
 
 <script>
-import ErrorMessage from '@/components/ErrorMessage';
-import NewNote from '@/components/NewNote';
+import ErrorMessage from "@/components/ErrorMessage";
+import NewNote from "@/components/NewNote";
+import Notes from "@/components/Notes.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     ErrorMessage,
     NewNote,
+    Notes,
   },
   data() {
     return {
-      title: 'Notes App',
-      errorMessage: '',
+      title: "Notes App",
+      errorMessage: "",
       note: {
-        title: '',
-        description: '',
+        title: "",
+        description: "",
       },
       notes: [
         {
-          title: 'First Note',
-          description: 'First Description',
+          title: "First Note",
+          description: "First Description",
           date: new Date(Date.now()).toLocaleString(),
         },
         {
-          title: 'Second Note',
-          description: 'Second Description',
+          title: "Second Note",
+          description: "Second Description",
           date: new Date(Date.now()).toLocaleString(),
         },
         {
-          title: 'Third Note',
-          description: 'Third Description',
+          title: "Third Note",
+          description: "Third Description",
           date: new Date(Date.now()).toLocaleString(),
         },
       ],
@@ -67,8 +56,8 @@ export default {
     createNote() {
       let { title, description } = this.note;
 
-      if ((title && description) === '') {
-        this.errorMessage = 'Title and description are required';
+      if ((title && description) === "") {
+        this.errorMessage = "Title and description are required";
         return;
       }
       this.notes.push({
@@ -76,7 +65,7 @@ export default {
         description,
         date: new Date(Date.now()).toLocaleString(),
       });
-      this.errorMessage = '';
+      this.errorMessage = "";
     },
   },
 };
