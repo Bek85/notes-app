@@ -5,13 +5,10 @@
         <div class="container">
           <h1>{{ title }}</h1>
 
-          <error-message :message="errorMessage" v-if="errorMessage" />
+          <ErrorMessage :message="errorMessage" v-if="errorMessage" />
 
-          <div class="new-note">
-            <input v-model="note.title" type="text" required />
-            <textarea v-model="note.description" required></textarea>
-            <button @click="createNote">New Note</button>
-          </div>
+          <NewNote :note="note" @createNote="createNote" />
+
           <div class="notes">
             <div class="note" v-for="(note, index) in notes" :key="index">
               <div class="note-header">
@@ -30,12 +27,14 @@
 </template>
 
 <script>
-import errorMessage from '@/components/errorMessage.vue';
+import ErrorMessage from '@/components/ErrorMessage';
+import NewNote from '@/components/NewNote';
 
 export default {
   name: 'App',
   components: {
-    errorMessage,
+    ErrorMessage,
+    NewNote,
   },
   data() {
     return {
