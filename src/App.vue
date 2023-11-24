@@ -1,7 +1,14 @@
 <template>
-  <div id="app">
-    <h1>Hello</h1>
-    <img alt="Vue logo" src="./assets/logo.png" />
+  <div class="wrapper">
+    <div class="wrapper-content">
+      <section>
+        <div class="container">
+          <h1>Hello</h1>
+          <img alt="Vue logo" src="./assets/logo.png" />
+          <img src="./assets/column.svg" alt="" />
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
