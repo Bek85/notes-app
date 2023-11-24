@@ -4,6 +4,7 @@
       <section>
         <div class="container">
           <h1>{{ title }}</h1>
+
           <error-message :message="errorMessage" v-if="errorMessage" />
 
           <div class="new-note">

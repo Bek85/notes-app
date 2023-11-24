@@ -1,7 +1,7 @@
 <template>
-  <div class="error-message">
+  <p class="message">
     {{ message }}
-  </div>
+  </p>
 </template>
 
 <script>
@@ -17,8 +17,8 @@ export default {
 };
 </script>
 
-<style>
-.error-message {
+<style lang="scss" scoped>
+.message {
   margin: 10px 0;
   color: red;
 }
