@@ -9,8 +9,6 @@
           <div class="note-header">
             <h1>{{ title }}</h1>
 
-            <p>{{ search }}</p>
-
             <Search
               @search="search = $event"
               :value="search"
@@ -59,7 +57,7 @@
             </div>
           </div>
 
-          <Notes :notes="notes" @removeNote="removeNote" :grid="grid" />
+          <Notes :notes="notesFilter" @removeNote="removeNote" :grid="grid" />
         </div>
       </section>
     </div>
@@ -109,6 +107,21 @@ export default {
       ],
     };
   },
+  computed: {
+    notesFilter() {
+      let array = this.notes;
+      let search = this.search;
+      if (!search) return array;
+      search = search.trim().toLowerCase();
+
+      array.filter((item) => {
+        if (item.title.toLowerCase().indexOf(search)) return item;
+      });
+
+      return array;
+    },
+  },
+
   methods: {
     createNote() {
       let { title, description } = this.note;
