@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'newNote',
+  name: "newNote",
 
   props: {
     note: {
@@ -21,7 +21,7 @@ export default {
 
   methods: {
     createNote() {
-      this.$emit('createNote', this.note);
+      this.$emit("createNote", this.note);
     },
   },
 };

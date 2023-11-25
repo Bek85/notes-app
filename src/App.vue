@@ -6,7 +6,8 @@
           <ErrorMessage :message="errorMessage" v-if="errorMessage" />
 
           <NewNote :note="note" @createNote="createNote" />
-          <div class="note-header">
+
+          <div class="note-header" style="margin: 36px 0">
             <h1>{{ title }}</h1>
 
             <Search
