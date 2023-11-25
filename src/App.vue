@@ -4,9 +4,19 @@
       <section>
         <div class="container">
           <ErrorMessage :message="errorMessage" v-if="errorMessage" />
+
           <NewNote :note="note" @createNote="createNote" />
           <div class="note-header">
             <h1>{{ title }}</h1>
+
+            <p>{{ search }}</p>
+
+            <Search
+              @search="search = $event"
+              :value="search"
+              placeholder="Find your note"
+            />
+
             <div class="icons">
               <svg
                 @click="grid = true"
@@ -60,6 +70,7 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import NewNote from "@/components/NewNote";
 import Notes from "@/components/Notes.vue";
+import Search from "@/components/Search.vue";
 
 export default {
   name: "App",
@@ -67,12 +78,14 @@ export default {
     ErrorMessage,
     NewNote,
     Notes,
+    Search,
   },
   data() {
     return {
       title: "Notes App",
       errorMessage: "",
       grid: true,
+      search: "",
       note: {
         title: "",
         description: "",
