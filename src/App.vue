@@ -114,8 +114,8 @@ export default {
       if (!search) return array;
       search = search.trim().toLowerCase();
 
-      array.filter((item) => {
-        if (item.title.toLowerCase().indexOf(search)) return item;
+      array = array.filter((item) => {
+        if (item.title.toLowerCase().indexOf(search) !== -1) return item;
       });
 
       return array;
