@@ -3,6 +3,7 @@
     <div class="note" v-for="(note, index) in notes" :key="index">
       <div class="note-header">
         <p>{{ note.title }}</p>
+        <button @click="removeNote(index)" class="close-btn">X</button>
       </div>
       <div class="note-body">
         <p>{{ note.description }}</p>
@@ -19,6 +20,11 @@ export default {
     notes: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    removeNote(index) {
+      this.$emit("removeNote", index);
     },
   },
 };
@@ -41,9 +47,15 @@ export default {
 }
 
 .note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   p {
     font-size: 22px;
     color: #999;
+  }
+  .close-btn {
+    cursor: pointer;
   }
 }
 

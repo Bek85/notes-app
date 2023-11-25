@@ -6,7 +6,7 @@
           <h1>{{ title }}</h1>
           <ErrorMessage :message="errorMessage" v-if="errorMessage" />
           <NewNote :note="note" @createNote="createNote" />
-          <Notes :notes="notes" />
+          <Notes :notes="notes" @removeNote="removeNote" />
         </div>
       </section>
     </div>
@@ -66,6 +66,9 @@ export default {
         date: new Date(Date.now()).toLocaleString(),
       });
       this.errorMessage = "";
+    },
+    removeNote(index) {
+      this.notes.splice(index, 1);
     },
   },
 };
